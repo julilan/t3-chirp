@@ -1,24 +1,60 @@
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { api } from "~/utils/api";
 
-export default function ProfilePage() {
-  const { data, isLoading } = api.profile.getUserByUsername.useQuery({
-    username: "julilan",
+const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
+  const { data } = api.profile.getUserByUsername.useQuery({
+    username,
   });
-  if (isLoading) return <div>Loading...</div>;
 
   if (!data) return <div>404</div>;
 
-  console.log(data);
+  console.log(username);
 
   return (
     <>
       <Head>
-        <title>Profile</title>
+        <title>{data.username}</title>
       </Head>
       <main className="flex h-screen justify-center">
         <div>{data.username}</div>
       </main>
     </>
   );
-}
+};
+
+export default ProfilePage;
+
+import { createServerSideHelpers } from "@trpc/react-query/server";
+import { appRouter } from "~/server/api/root";
+import { prisma } from "~/server/db";
+import superjson from "superjson";
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const helpers = createServerSideHelpers({
+    router: appRouter,
+    ctx: { prisma, userId: null },
+    transformer: superjson, // optional - adds superjson serialization
+  });
+
+  const slug = context.params?.slug as string;
+
+  // prefetch data
+  const username = slug.replace("@", "");
+
+  await helpers.profile.getUserByUsername.prefetch({ username });
+
+  return {
+    props: {
+      trpcState: helpers.dehydrate(),
+      username,
+    },
+  };
+};
+
+export const getStaticPaths = () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+};
