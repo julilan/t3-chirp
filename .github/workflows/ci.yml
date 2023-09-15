@@ -14,13 +14,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Dependencies
-        run: bun install
+        run: npm install
 
       - name: Typecheck
-        run: bun run typecheck
+        run: npm run typecheck
 
       - name: Lint
-        run: bun run lint
+        run: npm run lint
 
       - name: Print Environment Variable
         run: echo $MY_ENV_VAR
