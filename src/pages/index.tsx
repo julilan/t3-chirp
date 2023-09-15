@@ -1,4 +1,4 @@
-import { UserButton, useUser } from "@clerk/nextjs";
+import { useUser, SignInButton } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 
@@ -103,7 +103,11 @@ export default function Home() {
   return (
     <PageLayout>
       <div className="flex border-b border-slate-400 p-4">
-        {!isSignedIn && <UserButton afterSignOutUrl="/" />}
+        {!isSignedIn && (
+          <div className="flex justify-center">
+            <SignInButton />
+          </div>
+        )}
         {isSignedIn && <CreatePostWizard />}
       </div>
       <Feed />
