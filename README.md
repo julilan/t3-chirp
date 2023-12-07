@@ -11,7 +11,12 @@ This repository follows the T3 stack [tutorial](https://www.youtube.com/watch?v=
 - [tRPC](https://trpc.io)
 
 ## Development Status 
-Database sleeping
+- Database might be sleeping
+- Logout button needed
+- Connecting auth username/uuid to db (this still needs to be manually set with Prisma, username will be null until this is done)
+
+## Screenshots
+<img width="295" alt="Screenshot 2023-12-07 at 13 16 43" src="https://github.com/julilan/t3-chirp/assets/122397061/6499a4a5-d4d5-4d92-b38b-c21d6d19bfad">
 
 
 ## T3 Generated Readme
