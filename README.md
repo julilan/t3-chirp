@@ -1,6 +1,6 @@
-# Chirp
+# T3 Chirp
 
-This repository follows the T3 stack [tutorial](https://www.youtube.com/watch?v=YkOSUVzOAA4) of building an Emoji Twitter Clone where the user can send emoji tweets.
+This repository follows the [T3 App tutorial](https://www.youtube.com/watch?v=YkOSUVzOAA4) of building an Emoji Twitter clone where the user can send emoji tweets.
 
 ## Built with:
 - [Next.js](https://nextjs.org)
@@ -9,14 +9,15 @@ This repository follows the T3 stack [tutorial](https://www.youtube.com/watch?v=
 - [Planetscale](https://planetscale.com/)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+- [Zod](https://zod.dev/)
 
-## Development Status 
-- Database might be sleeping
+## Development Status & Issues
+- Planetscale DB might be sleeping (update: woken up 07-12-23)
 - Logout button needed
-- Connecting auth username/uuid to db (this still needs to be manually set with Prisma, username will be null until this is done)
+- Connecting new auth username/uuid to db (this still needs to be manually set with Prisma, username will show as null in client until this is done)
 
 ## Screenshots
-<img width="295" alt="Screenshot 2023-12-07 at 13 16 43" src="https://github.com/julilan/t3-chirp/assets/122397061/6499a4a5-d4d5-4d92-b38b-c21d6d19bfad">
+<img width="777" alt="Screenshot 2023-12-07 at 16 28 27" src="https://github.com/julilan/t3-chirp/assets/122397061/b80e8b89-b60a-4581-9868-4a3324d28708">
 
 
 ## T3 Generated Readme
